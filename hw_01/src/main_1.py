@@ -18,13 +18,13 @@ def sum_even_numbers(numbers: list) -> int:
     return result
 
 
-def most_frequently_encountered_element(numbers: list):
+def most_frequently_encountered_element(numbers: list) -> int:
 
     if not is_list_correct(numbers, 10 ** 5):
         raise ValueError()
 
     checked_numbers = []
-    result = numbers[1]
+    result = numbers[0]
     frequency_of_result = 0
 
     for i in range(0, len(numbers), 1):
@@ -53,6 +53,9 @@ def most_frequently_encountered_element(numbers: list):
 
 def sum_of_target(numbers: list, target: int):
     if not is_list_correct(numbers, 104, 2):
+        raise ValueError()
+
+    if not is_number_correct(target, -109, 109):
         raise ValueError()
 
     for i in range(0, len(numbers), 1):
@@ -87,10 +90,3 @@ def is_number_correct(number: int, low_border, high_border) -> bool:
         return False
 
     return True
-
-
-print(sum_even_numbers([5, 3, 1, 6, 4, 10, 12, 54]))
-
-print(most_frequently_encountered_element([1, 2, 2, 3, 3, 3, 4, 4, 4, 4]))
-
-print(sum_of_target([2, 5, 7, 4], 9))
