@@ -1,4 +1,4 @@
-def factorial(n) -> int:
+def factorial(n: int) -> int:
     if not isinstance(n, int):
         raise TypeError("...")
     if n < 0:
@@ -12,7 +12,7 @@ def factorial(n) -> int:
     return result
 
 
-def fibonacci(n):
+def fibonacci(n: int) -> list:
     if not isinstance(n, int):
         raise TypeError("...")
     if n < 0:
@@ -29,4 +29,14 @@ def fibonacci(n):
     return result
 
 
-print(fibonacci(12))
+def count_ones(n: int) -> int:
+    counter = 0
+    num = n
+
+    while num > 0:
+        if num & 1 == 1:
+            counter += 1
+
+        num >>= 1
+
+    return counter
