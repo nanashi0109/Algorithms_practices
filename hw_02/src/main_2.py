@@ -1,8 +1,5 @@
 def factorial(n: int) -> int:
-    if not isinstance(n, int):
-        raise TypeError("...")
-    if n < 0:
-        raise ValueError("...")
+    check_num(n)
 
     result = 1
 
@@ -13,10 +10,7 @@ def factorial(n: int) -> int:
 
 
 def fibonacci(n: int) -> list:
-    if not isinstance(n, int):
-        raise TypeError("...")
-    if n < 0:
-        raise ValueError("...")
+    check_num(n)
 
     if n == 0:
         return [0]
@@ -30,6 +24,8 @@ def fibonacci(n: int) -> list:
 
 
 def count_ones(n: int) -> int:
+    check_num(n)
+
     counter = 0
     num = n
 
@@ -40,3 +36,8 @@ def count_ones(n: int) -> int:
         num >>= 1
 
     return counter
+
+
+def check_num(n):
+    assert isinstance(n, int), TypeError("Error type")
+    assert n >= 0, ValueError("Error value")
