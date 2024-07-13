@@ -1,5 +1,8 @@
 def factorial(n) -> int:
-    assert isinstance(n, int), TypeError("...")
+    if not isinstance(n, int):
+        raise TypeError("...")
+    if n < 0:
+        raise ValueError("...")
 
     result = 1
 
