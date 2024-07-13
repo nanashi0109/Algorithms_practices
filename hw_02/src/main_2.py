@@ -12,3 +12,21 @@ def factorial(n) -> int:
     return result
 
 
+def fibonacci(n):
+    if not isinstance(n, int):
+        raise TypeError("...")
+    if n < 0:
+        raise ValueError("...")
+
+    if n == 0:
+        return [0]
+
+    result = [0, 1, 1]
+
+    while result[-1] + result[-2] < n:
+        result.append(result[-1] + result[-2])
+
+    return result
+
+
+print(fibonacci(12))
