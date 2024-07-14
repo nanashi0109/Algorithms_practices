@@ -38,6 +38,31 @@ def count_ones(n: int) -> int:
     return counter
 
 
+def is_palindrome(x: int) -> bool:
+    if not isinstance(x, int):
+        raise TypeError("")
+
+    if x < 0:
+        return False
+
+    origin = x
+    reverse = 0
+
+    while x > 0:
+        remainder = x % 10
+        reverse = reverse*10 + remainder
+
+        x //= 10
+
+    return reverse == origin
+
+
 def check_num(n):
-    assert isinstance(n, int), TypeError("Error type")
-    assert n >= 0, ValueError("Error value")
+    if not isinstance(n, int):
+        raise TypeError("")
+
+    if n < 0:
+        raise ValueError("")
+
+
+print(is_palindrome(616))
