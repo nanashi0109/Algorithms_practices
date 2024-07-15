@@ -64,5 +64,3 @@ def check_num(n):
     if n < 0:
         raise ValueError("")
 
-
-print(is_palindrome(616))
