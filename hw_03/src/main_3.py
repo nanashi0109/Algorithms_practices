@@ -45,10 +45,49 @@ def rotate_and_reverse(arr: list, k: int) -> list:
 
         arr[0] = buff
 
-    for i in range(0, arr_length//2, 1):
+    for i in range(0, arr_length >> 1, 1):
         arr[i], arr[-i - 1] = arr[-i - 1], arr[i]
 
     return arr
 
 
-print(rotate_and_reverse([0, 1, 2, 3, 4, 5], 1))
+def reverse_even_elements(arr: list) -> list:
+    if not isinstance(arr, list):
+        raise TypeError()
+
+    if not arr:
+        return []
+
+
+def large_integer(digits: list) -> list:
+    if not isinstance(digits, list):
+        raise TypeError()
+
+    len_lst = len(digits)
+
+    if len_lst < 1 or len_lst > 100:
+        raise ValueError()
+
+    for i in digits:
+        if not isinstance(i, int):
+            raise TypeError()
+        if i < 0 or i > 9:
+            raise ValueError()
+
+    lst = digits.copy()
+
+    lst[-1] += 1
+
+    if lst[-1] != 10:
+        return lst
+
+    for i in range(len_lst-1, 0, -1):
+        if lst[i] == 10:
+            lst[i] = 0
+            lst[i - 1] += 1
+
+    if lst[0] == 10:
+        lst[0] = 1
+        lst.append(0)
+
+    return lst
