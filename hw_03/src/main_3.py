@@ -32,6 +32,9 @@ def rotate_and_reverse(arr: list, k: int) -> list:
     if not isinstance(arr, list) or not isinstance(k, int):
         raise TypeError
 
+    if not arr:
+        return []
+
     arr_length = len(arr)
 
     for i in range(0, k):
