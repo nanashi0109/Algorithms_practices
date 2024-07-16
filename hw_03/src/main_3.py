@@ -58,6 +58,30 @@ def reverse_even_elements(arr: list) -> list:
     if not arr:
         return []
 
+    even_numbers = []
+
+    for i in arr:
+        if not isinstance(i, int):
+            raise TypeError
+
+        if i & 1 != 1:
+            even_numbers.append(i)
+
+    for i in range(0, len(even_numbers) >> 1, 1):
+        even_numbers[i], even_numbers[-i-1] = even_numbers[-i-1], even_numbers[i]
+
+    result = []
+    even_index = 0
+
+    for num in arr:
+        if num & 1 != 1:
+            result.append(even_numbers[even_index])
+            even_index += 1
+        else:
+            result.append(num)
+
+    return result
+
 
 def increase_large_integer(digits: list) -> list:
     if not isinstance(digits, list):
