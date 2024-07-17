@@ -82,6 +82,7 @@ def reverse_even_elements(arr: list) -> list:
 
     return result
 
+
 def increase_large_integer(digits: list) -> list:
     if not isinstance(digits, list):
         raise TypeError()
