@@ -138,6 +138,10 @@ class SolveButton:
         input_data = self.__input_field.get_list_input_field().get()
         arr = input_data.split(" ")
 
+        if not arr:
+            App.send_warning("Input values")
+            return False
+
         return arr
 
     def __get_count_shifts_from_input(self):
