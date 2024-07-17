@@ -1,4 +1,4 @@
-from hw_03.src.main_3 import max_in_range
+from hw_03.src.main_3 import rotate_and_reverse
 from tkinter import *
 from tkinter import ttk
 from tkinter.messagebox import showinfo, showwarning
@@ -32,7 +32,7 @@ class App:
         self.__create_widgets()
 
         ttk.Label(master=self.__main_frame,
-                  text="Find the maximum number in a list with boundaries",
+                  text="Cycle to the right and reverse the list",
                   font=("Arial", 16),
                   justify=LEFT).grid(row=0, column=0, columnspan=3, pady=30)
 
@@ -40,13 +40,9 @@ class App:
             grid(row=1, column=0, sticky=E, ipadx=5))
         self.__input_field.get_list_input_field().grid(row=1, column=1, sticky=W)
 
-        (ttk.Label(master=self.__main_frame, text="Enter start index: ").
+        (ttk.Label(master=self.__main_frame, text="Enter count shift ").
             grid(row=2, column=0, sticky=E, ipadx=5))
-        self.__input_field.get_start_index_input_field().grid(row=2, column=1, sticky=W)
-
-        (ttk.Label(master=self.__main_frame, text="Enter end index: ").
-            grid(row=3, column=0, sticky=E, ipadx=5))
-        self.__input_field.get_end_index_input_field().grid(row=3, column=1, sticky=W)
+        self.__input_field.get_count_shift_input_field().grid(row=2, column=1, sticky=W)
 
         self.__solveButton.get_button().grid(row=4, column=1, columnspan=2, pady=10, sticky=W)
 
@@ -62,8 +58,6 @@ class App:
 
         self.__output_result_field.create_output_result(self.__main_frame)
 
-
-
     @staticmethod
     def send_warning(massage: str) -> None:
         showwarning(title="Warning", message=massage)
@@ -76,23 +70,18 @@ class App:
 class UserInputField:
     def __init__(self) -> None:
         self.__list_input_field = None
-        self.__start_index_input_field = None
-        self.__end_index_input_field = None
+        self.__count_shift_input_field = None
 
     def create_input_field(self, main_frame: Frame) -> None:
         self.__list_input_field = ttk.Entry(master=main_frame,  width=30)
 
-        self.__start_index_input_field = ttk.Entry(master=main_frame, width=5)
-        self.__end_index_input_field = ttk.Entry(master=main_frame, width=5)
+        self.__count_shift_input_field = ttk.Entry(master=main_frame, width=5)
 
     def get_list_input_field(self) -> Entry:
         return self.__list_input_field
 
-    def get_start_index_input_field(self) -> Entry:
-        return self.__start_index_input_field
-
-    def get_end_index_input_field(self) -> Entry:
-        return self.__end_index_input_field
+    def get_count_shift_input_field(self) -> Entry:
+        return self.__count_shift_input_field
 
 
 class OutputResultField:
@@ -129,27 +118,18 @@ class SolveButton:
 
     def __on_click_handler(self):
         arr = self.__get_list_from_input()
-        start_index = self.__get_start_index_from_input()
-        end_index = self.__get_end_index_from_input()
+        count_shifts = self.__get_count_shifts_from_input()
 
-        if not self.is_validate_input_data(arr, start_index, end_index):
+        if not self.is_validate_input_data(arr, count_shifts):
             return
 
-        result = max_in_range(arr, start_index, end_index)
+        result = rotate_and_reverse(arr, count_shifts)
 
-        self.__output_field.get_output_result().config(text=result)
+        self.__output_field.get_output_result().config(text=", ".join(result))
 
-    def is_validate_input_data(self, input_list, start, end) -> bool:
+    def is_validate_input_data(self, input_list, start) -> bool:
 
-        if (input_list is None) or (start is None) or (end is None):
-            return False
-
-        if end > len(input_list)-1:
-            App.send_warning("End index cannot be greater than length arr")
-            return False
-
-        if start > end:
-            App.send_warning("Start index cannot be greater than end index")
+        if (input_list is None) or (start is None):
             return False
 
         return True
@@ -158,36 +138,18 @@ class SolveButton:
         input_data = self.__input_field.get_list_input_field().get()
         arr = input_data.split(" ")
 
-        if not arr:
-            App.send_warning("Input integer")
-            return False
-
-        for i in range(0, len(arr), 1):
-            arr[i] = self.__convert_input_data(arr[i], convert_to=lambda x: float(x))
-
         return arr
 
-    def __get_start_index_from_input(self):
-        input_data = self.__input_field.get_start_index_input_field().get()
+    def __get_count_shifts_from_input(self):
+        input_data = self.__input_field.get_count_shift_input_field().get()
 
         input_data = self.__convert_input_data(input_data, convert_to=lambda x: int(x))
 
         if input_data is None:
-            App.send_warning("Start index should be integer")
+            App.send_warning("Count shits should be integer")
             return None
 
         return input_data
-
-    def __get_end_index_from_input(self):
-        input_data = self.__input_field.get_end_index_input_field().get()
-
-        input_data = self.__convert_input_data(input_data, convert_to=lambda x: int(x))
-
-        if input_data is None:
-            App.send_warning("End index should be integer")
-            return None
-
-        return int(input_data)
 
     def __convert_input_data(self, input_data: str, convert_to=lambda x: int(x)):
         if not input_data.isdigit():
