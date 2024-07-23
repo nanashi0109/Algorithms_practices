@@ -41,7 +41,7 @@ def choice_sort(array: list) -> [list, int, int]:
     return [array, count_comparisons, count_exchanges]
 
 
-def recursive_sum(array: list[int or float], counter=0) -> float:
+def recursive_sum(array: list[int or float]) -> float:
 
     if len(array) == 0:
         return 0
@@ -49,49 +49,29 @@ def recursive_sum(array: list[int or float], counter=0) -> float:
     if len(array) == 1:
         return array[0]
 
-    if counter == len(array)-1:
-        return array[counter]
-
-    elem = array[counter]
-    counter += 1
-    return elem + recursive_sum(array, counter)
+    return array[0] + recursive_sum(array[1:])
 
 
-print(recursive_sum([1, 5, 2, 7, 21, 5]))
-
-
-def recursive_max(array: list[int or float], i=0) -> float:
+def recursive_max(array: list[int or float]) -> float:
     if len(array) == 0:
         return 0
 
     if len(array) == 1:
         return array[0]
 
-    if i == len(array)-1:
-        return array[i]
+    max_elem = recursive_max(array[1:])
 
-    max_elem = array[i]
-    i += 1
-    next_elem = recursive_max(array, i)
-
-    if max_elem < next_elem:
-        max_elem = next_elem
-    return max_elem
+    return array[0] if array[0] > max_elem else max_elem
 
 
 def recursive_even_sum(array: list[int or float]) -> float:
     if len(array) == 0:
         return 0
 
-    if len(array) == 1:
-        if array[0] & 1 == 0:
-            return array[0]
-
-    elem = array.pop(0)
-    if elem & 1 == 0:
-        return elem + recursive_even_sum(array)
+    if array[0] & 1 == 0:
+        return array[0] + recursive_even_sum(array[1:])
     else:
-        return recursive_even_sum(array)
+        return recursive_even_sum(array[1:])
 
 
 def reverse_string(string: str) -> str:
