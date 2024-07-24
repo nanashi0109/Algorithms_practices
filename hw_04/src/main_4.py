@@ -81,12 +81,13 @@ def recursive_max(array: list[int or float]) -> int or float:
 
 
 # 5
-def recursive_even_sum(array: list[int or float]) -> float:
+def recursive_even_sum(array: list[int or float]) -> int:
     assert isinstance(array, list), TypeError()
-    assert isinstance(array[0], (int, float)), TypeError()
 
     if len(array) == 0:
         return 0
+
+    assert isinstance(array[0], int), TypeError()
 
     if array[0] & 1 == 0:
         return array[0] + recursive_even_sum(array[1:])
