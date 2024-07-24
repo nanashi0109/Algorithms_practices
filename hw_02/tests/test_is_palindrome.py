@@ -2,6 +2,7 @@ from hw_02.src.main_2 import is_palindrome
 import pytest
 
 
+@pytest.mark.hw_02
 @pytest.mark.parametrize("value, expected_result",
                          [
                              (512, False),
@@ -14,6 +15,7 @@ def test_is_palindrome_positive(value, expected_result):
     assert is_palindrome(value) == expected_result
 
 
+@pytest.mark.hw_02
 @pytest.mark.parametrize("value, expected_result",
                          [
                              ("str", pytest.raises(TypeError)),

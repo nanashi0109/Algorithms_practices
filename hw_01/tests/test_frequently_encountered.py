@@ -2,6 +2,7 @@ from hw_01.src.main_1 import most_frequently_encountered_element
 import pytest
 
 
+@pytest.mark.hw_01
 @pytest.mark.parametrize("numbers, expected_result",
                          [
                              ([1, 2, 2, 3, 3, 3, 4, 4, 4, 4], 4),
@@ -14,6 +15,7 @@ def test_frequently_encountered_positive(numbers, expected_result):
     assert most_frequently_encountered_element(numbers) == expected_result
 
 
+@pytest.mark.hw_01
 @pytest.mark.parametrize("numbers, expected_result",
                          [
                              ("str", pytest.raises(TypeError)),
@@ -31,6 +33,7 @@ def test_frequently_encountered_negative(numbers, expected_result):
         assert most_frequently_encountered_element(numbers) == expected_result
 
 
+@pytest.mark.hw_01
 @pytest.mark.parametrize("numbers, expected_result",
                          [
                              ([2], 2),

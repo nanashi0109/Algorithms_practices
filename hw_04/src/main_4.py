@@ -1,5 +1,5 @@
 # 1
-def bobble_sort(array: list, key=lambda x: int(x), order_by=lambda x, y: x > y) -> list:
+def bobble_sort(array: list, key=lambda x: float(x), order_by=lambda x, y: x > y) -> list:
     assert isinstance(array, list), TypeError()
 
     length_array = len(array)

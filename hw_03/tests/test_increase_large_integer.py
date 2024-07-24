@@ -2,6 +2,7 @@ from hw_03.src.main_3 import increase_large_integer
 import pytest
 
 
+@pytest.mark.hw_03
 @pytest.mark.parametrize("digits, expected_result",
                          [
                              ([1, 2, 3, 4, 5], [1, 2, 3, 4, 6]),
@@ -13,6 +14,7 @@ def test_increase_int_positive(digits, expected_result):
     assert increase_large_integer(digits) == expected_result
 
 
+@pytest.mark.hw_03
 @pytest.mark.parametrize("digits, expected_result",
                          [
                              ("str", pytest.raises(TypeError)),

@@ -2,6 +2,7 @@ from hw_03.src.main_3 import max_in_range
 import pytest
 
 
+@pytest.mark.hw_03
 @pytest.mark.parametrize("array, start, end, expected_result",
                          [
                              ([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], 0, 9, [9, 9, 9]),
@@ -14,6 +15,7 @@ def test_max_in_range_positive(array, start, end, expected_result):
     assert max_in_range(array, start, end) == expected_result
 
 
+@pytest.mark.hw_03
 @pytest.mark.parametrize("array, start, end, expected_result",
                          [
                              ("", 0, 0, pytest.raises(TypeError)),

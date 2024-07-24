@@ -2,6 +2,7 @@ from hw_02.src.main_2 import count_ones
 import pytest
 
 
+@pytest.mark.hw_02
 @pytest.mark.parametrize("value, expected_result",
                          [
                              (7, 3),
@@ -12,6 +13,7 @@ def test_count_ones_positive(value, expected_result):
     assert count_ones(value) == expected_result
 
 
+@pytest.mark.hw_02
 @pytest.mark.parametrize("value, expected_result",
                          [
                              ("str", pytest.raises(TypeError)),
