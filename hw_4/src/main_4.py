@@ -82,3 +82,11 @@ def reverse_string(string: str) -> str:
 
     return string[-1] + reverse_string(string[:-1])
 
+
+def is_palindrome(string: str) -> bool:
+    if len(string) == 0:
+        return True
+
+    return is_palindrome(string[1:-1]) if string[0] == string[-1] else False
+
+
