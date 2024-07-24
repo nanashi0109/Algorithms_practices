@@ -160,4 +160,22 @@ class DList:
         pass
 
     def is_empty(self) -> bool:
-        pass
+        return True if self.__count == 0 else False
+
+    def __realloc(self):
+
+        self.__size += self.__size//2
+
+        new_memory = malloc(self.__size)
+
+        for i in range(0, self.__count, 1):
+            new_memory[i] = self.__array[i]
+
+        self.__array = new_memory
+
+
+def malloc(size: int = 1) -> list:
+    assert isinstance(size, int), TypeError()
+    assert size > 0, ValueError()
+
+    return [None] * size
