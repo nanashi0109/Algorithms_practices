@@ -12,3 +12,13 @@ import pytest
                          ])
 def test_choice_sort_positive(array, expected_result):
     assert choice_sort(array) == expected_result
+
+
+@pytest.mark.hw_04
+@pytest.mark.parametrize("array, expected_result",
+                         [
+                             ([], [[], 0, 0]),
+                             ([1], [[1], 0, 0])
+                         ])
+def test_choice_sort_boundary(array, expected_result):
+    assert choice_sort(array) == expected_result

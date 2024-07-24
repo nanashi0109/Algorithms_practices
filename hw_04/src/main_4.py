@@ -27,9 +27,9 @@ def choice_sort(array: list) -> [list, int, int]:
         assert isinstance(array[i], (int, float)), TypeError
 
     if length_array == 0:
-        return array
+        return [array, 0, 0]
     if length_array == 1:
-        return array
+        return [array, 0, 0]
 
     count_exchanges = 0
     count_comparisons = 0
@@ -49,12 +49,13 @@ def choice_sort(array: list) -> [list, int, int]:
 
 
 # 3
-def recursive_sum(array: list[int or float]) -> float:
+def recursive_sum(array: list[int or float]) -> int or float:
     assert isinstance(array, list), TypeError()
-    assert isinstance(array[0], (int, float)), TypeError()
 
     if len(array) == 0:
         return 0
+
+    assert isinstance(array[0], (int, float)), TypeError()
 
     if len(array) == 1:
         return array[0]
