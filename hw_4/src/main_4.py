@@ -136,16 +136,28 @@ def sum_of_digits(n: int) -> int:
 
 # 10
 class DList:
-    def __init__(self):
-        self.__size = 0
+    def __init__(self, size=1):
+        self.__size = size
         self.__count = 0
         self.__array = []
 
+        if self.__size != 0:
+            self.__array = malloc(size)
+
     def add(self, item: any) -> None:
-        pass
+        self.__is_enough_memory()
+
+        self.__array[self.__count] = item
+        self.__count += 1
 
     def add_front(self, item: any) -> None:
-        pass
+        self.__is_enough_memory()
+
+        for i in range(self.__count, 0, -1):
+            self.__array[i] = self.__array[i-1]
+
+        self.__array[0] = item
+        self.__count += 1
 
     def remove(self, item: any) -> None:
         pass
@@ -162,6 +174,10 @@ class DList:
     def is_empty(self) -> bool:
         return True if self.__count == 0 else False
 
+    def __is_enough_memory(self):
+        if self.__count >= self.__size:
+            self.__realloc()
+
     def __realloc(self):
 
         self.__size += self.__size//2
@@ -173,9 +189,26 @@ class DList:
 
         self.__array = new_memory
 
+    def __str__(self):
+        array_str = ""
+        for i in range(0, self.__count, 1):
+            array_str += f"{self.__array[i]}, "
+        return array_str
+
 
 def malloc(size: int = 1) -> list:
     assert isinstance(size, int), TypeError()
     assert size > 0, ValueError()
 
     return [None] * size
+
+
+dlist = DList(5)
+
+dlist.add(1)
+dlist.add(2)
+dlist.add(3)
+dlist.add_front(0)
+
+
+print(dlist)
