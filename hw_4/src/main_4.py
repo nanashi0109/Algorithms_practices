@@ -134,4 +134,30 @@ def sum_of_digits(n: int) -> int:
     return (n % 10) + sum_of_digits(n//10)
 
 
+# 10
+class DList:
+    def __init__(self):
+        self.__size = 0
+        self.__count = 0
+        self.__array = []
 
+    def add(self, item: any) -> None:
+        pass
+
+    def add_front(self, item: any) -> None:
+        pass
+
+    def remove(self, item: any) -> None:
+        pass
+
+    def remove_of_index(self, index: int) -> None:
+        pass
+
+    def find(self, item: any) -> int:
+        pass
+
+    def insert_of_index(self, item: any, index: int) -> None:
+        pass
+
+    def is_empty(self) -> bool:
+        pass
