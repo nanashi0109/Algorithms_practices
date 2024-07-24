@@ -1,4 +1,4 @@
-
+# 1
 def bobble_sort(array: list, key=lambda x: int(x), order_by=lambda x, y: x > y) -> list:
 
     length_array = len(array)
@@ -16,6 +16,7 @@ def bobble_sort(array: list, key=lambda x: int(x), order_by=lambda x, y: x > y) 
     return array
 
 
+# 2
 def choice_sort(array: list) -> [list, int, int]:
     length_array = len(array)
 
@@ -40,7 +41,7 @@ def choice_sort(array: list) -> [list, int, int]:
 
     return [array, count_comparisons, count_exchanges]
 
-
+# 3
 def recursive_sum(array: list[int or float]) -> float:
 
     if len(array) == 0:
@@ -51,7 +52,7 @@ def recursive_sum(array: list[int or float]) -> float:
 
     return array[0] + recursive_sum(array[1:])
 
-
+# 4
 def recursive_max(array: list[int or float]) -> float:
     if len(array) == 0:
         return 0
@@ -63,7 +64,7 @@ def recursive_max(array: list[int or float]) -> float:
 
     return array[0] if array[0] > max_elem else max_elem
 
-
+# 5
 def recursive_even_sum(array: list[int or float]) -> float:
     if len(array) == 0:
         return 0
@@ -73,7 +74,7 @@ def recursive_even_sum(array: list[int or float]) -> float:
     else:
         return recursive_even_sum(array[1:])
 
-
+# 6
 def reverse_string(string: str) -> str:
     if len(string) == 0:
         return string
@@ -82,7 +83,7 @@ def reverse_string(string: str) -> str:
 
     return string[-1] + reverse_string(string[:-1])
 
-
+# 7
 def is_palindrome(string: str) -> bool:
     if len(string) == 0:
         return True
@@ -90,6 +91,7 @@ def is_palindrome(string: str) -> bool:
     return is_palindrome(string[1:-1]) if string[0] == string[-1] else False
 
 
+# 8
 def fibonacci(n: int) -> int:
     if n == 0:
         return 0
@@ -98,6 +100,14 @@ def fibonacci(n: int) -> int:
         return 1
 
     return fibonacci(n-1) + fibonacci(n-2)
+
+
+# 9
+def sum_of_digits(n: int) -> int:
+    if n == 0:
+        return 0
+
+    return (n % 10) + sum_of_digits(n//10)
 
 
 
