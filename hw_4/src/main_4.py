@@ -1,5 +1,6 @@
 # 1
 def bobble_sort(array: list, key=lambda x: int(x), order_by=lambda x, y: x > y) -> list:
+    assert isinstance(array, list), TypeError()
 
     length_array = len(array)
     if length_array == 0:
@@ -18,6 +19,8 @@ def bobble_sort(array: list, key=lambda x: int(x), order_by=lambda x, y: x > y) 
 
 # 2
 def choice_sort(array: list) -> [list, int, int]:
+    assert isinstance(array, list), TypeError()
+
     length_array = len(array)
 
     if length_array == 0:
@@ -41,8 +44,11 @@ def choice_sort(array: list) -> [list, int, int]:
 
     return [array, count_comparisons, count_exchanges]
 
+
 # 3
 def recursive_sum(array: list[int or float]) -> float:
+    assert isinstance(array, list), TypeError()
+    assert isinstance(array[0], (int, float)), TypeError()
 
     if len(array) == 0:
         return 0
@@ -52,8 +58,12 @@ def recursive_sum(array: list[int or float]) -> float:
 
     return array[0] + recursive_sum(array[1:])
 
+
 # 4
 def recursive_max(array: list[int or float]) -> float:
+    assert isinstance(array, list), TypeError()
+    assert isinstance(array[0], (int, float)), TypeError()
+
     if len(array) == 0:
         return 0
 
@@ -64,8 +74,12 @@ def recursive_max(array: list[int or float]) -> float:
 
     return array[0] if array[0] > max_elem else max_elem
 
+
 # 5
 def recursive_even_sum(array: list[int or float]) -> float:
+    assert isinstance(array, list), TypeError()
+    assert isinstance(array[0], (int, float)), TypeError()
+
     if len(array) == 0:
         return 0
 
@@ -74,8 +88,11 @@ def recursive_even_sum(array: list[int or float]) -> float:
     else:
         return recursive_even_sum(array[1:])
 
+
 # 6
 def reverse_string(string: str) -> str:
+    assert isinstance(string, str), TypeError()
+
     if len(string) == 0:
         return string
     if len(string) == 1:
@@ -83,8 +100,11 @@ def reverse_string(string: str) -> str:
 
     return string[-1] + reverse_string(string[:-1])
 
+
 # 7
 def is_palindrome(string: str) -> bool:
+    assert isinstance(string, str), TypeError()
+
     if len(string) == 0:
         return True
 
@@ -93,6 +113,8 @@ def is_palindrome(string: str) -> bool:
 
 # 8
 def fibonacci(n: int) -> int:
+    assert isinstance(n, int), TypeError()
+
     if n == 0:
         return 0
 
@@ -104,6 +126,8 @@ def fibonacci(n: int) -> int:
 
 # 9
 def sum_of_digits(n: int) -> int:
+    assert isinstance(n, int), TypeError()
+
     if n == 0:
         return 0
 
