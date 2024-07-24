@@ -23,6 +23,9 @@ def choice_sort(array: list) -> [list, int, int]:
 
     length_array = len(array)
 
+    for i in range(0, length_array, 1):
+        assert isinstance(array[i], (int, float)), TypeError
+
     if length_array == 0:
         return array
     if length_array == 1:
