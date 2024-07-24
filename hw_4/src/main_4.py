@@ -136,7 +136,7 @@ def sum_of_digits(n: int) -> int:
 
 # 10
 class DList:
-    def __init__(self, size=1):
+    def __init__(self, size: int = 1):
         self.__size = size
         self.__count = 0
         self.__array = []
@@ -160,10 +160,31 @@ class DList:
         self.__count += 1
 
     def remove(self, item: any) -> None:
-        pass
+
+        for i in range(0, self.__count, 1):
+            if item == self.__array[i]:
+
+                for j in range(i, self.__count-1, 1):
+                    self.__array[j] = self.__array[j + 1]
+
+                self.__array[self.__count-1] = None
+
+                self.__count -= 1
+
+                return
+
+        raise ValueError("Element was not found")
 
     def remove_of_index(self, index: int) -> None:
-        pass
+        if index > self.__count-1:
+            raise ValueError("")
+
+        for i in range(index, self.__count-1, 1):
+            self.__array[i] = self.__array[i+1]
+
+        self.__array[self.__count-1] = None
+
+        self.__count -= 1
 
     def find(self, item: any) -> int:
         pass
@@ -191,24 +212,29 @@ class DList:
 
     def __str__(self):
         array_str = ""
-        for i in range(0, self.__count, 1):
+
+        for i in range(0, self.__count-1, 1):
             array_str += f"{self.__array[i]}, "
+
+        array_str += f"{self.__array[self.__count-1]}"
         return array_str
 
 
-def malloc(size: int = 1) -> list:
+def malloc(size: int) -> list:
     assert isinstance(size, int), TypeError()
     assert size > 0, ValueError()
 
     return [None] * size
 
 
-dlist = DList(5)
+dlist = DList(size=5)
 
 dlist.add(1)
 dlist.add(2)
 dlist.add(3)
 dlist.add_front(0)
+dlist.add_front(0)
 
+dlist.remove_of_index(2)
 
 print(dlist)
