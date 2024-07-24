@@ -80,5 +80,5 @@ def reverse_string(string: str) -> str:
     if len(string) == 1:
         return string
 
-
+    return string[-1] + reverse_string(string[:-1])
 
