@@ -182,7 +182,9 @@ class DList:
         raise ValueError("Element was not found")
 
     def remove_of_index(self, index: int) -> None:
-        if index > self.__count-1:
+        assert isinstance(index, int), TypeError()
+
+        if index >= self.__count:
             raise ValueError("")
 
         for i in range(index, self.__count-1, 1):
@@ -194,13 +196,18 @@ class DList:
 
     def find(self, item: any) -> int:
         for i in range(0, self.__count, 1):
-            if self.__array[i] == item:
+            if self.__array[i] is item:
                 return i
 
         return -1
 
     def insert_of_index(self, item: any, index: int) -> None:
+        assert isinstance(index, int), TypeError()
+
         self.__is_enough_memory()
+
+        if index >= self.__count:
+            raise ValueError("")
 
         for i in range(self.__count, index, -1):
             self.__array[i] = self.__array[i-1]
