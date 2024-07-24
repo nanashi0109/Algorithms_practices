@@ -64,12 +64,13 @@ def recursive_sum(array: list[int or float]) -> int or float:
 
 
 # 4
-def recursive_max(array: list[int or float]) -> float:
+def recursive_max(array: list[int or float]) -> int or float:
     assert isinstance(array, list), TypeError()
-    assert isinstance(array[0], (int, float)), TypeError()
 
     if len(array) == 0:
         return 0
+
+    assert isinstance(array[0], (int, float)), TypeError()
 
     if len(array) == 1:
         return array[0]
