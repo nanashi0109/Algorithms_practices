@@ -187,10 +187,20 @@ class DList:
         self.__count -= 1
 
     def find(self, item: any) -> int:
-        pass
+        for i in range(0, self.__count, 1):
+            if self.__array[i] == item:
+                return i
+
+        return -1
 
     def insert_of_index(self, item: any, index: int) -> None:
-        pass
+        self.__is_enough_memory()
+
+        for i in range(self.__count, index, -1):
+            self.__array[i] = self.__array[i-1]
+
+        self.__array[index] = item
+        self.__count += 1
 
     def is_empty(self) -> bool:
         return True if self.__count == 0 else False
@@ -225,16 +235,3 @@ def malloc(size: int) -> list:
     assert size > 0, ValueError()
 
     return [None] * size
-
-
-dlist = DList(size=5)
-
-dlist.add(1)
-dlist.add(2)
-dlist.add(3)
-dlist.add_front(0)
-dlist.add_front(0)
-
-dlist.remove_of_index(2)
-
-print(dlist)
