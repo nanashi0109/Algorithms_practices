@@ -1,5 +1,5 @@
 # 1
-def bobble_sort(array: list, key=lambda x: float(x), order_by=lambda x, y: x > y) -> list:
+def bubble_sort(array: list, key=lambda x: float(x), order_by=lambda x, y: x > y) -> list:
     assert isinstance(array, list), TypeError()
 
     length_array = len(array)
@@ -22,9 +22,6 @@ def choice_sort(array: list) -> [list, int, int]:
     assert isinstance(array, list), TypeError()
 
     length_array = len(array)
-
-    for i in range(0, length_array, 1):
-        assert isinstance(array[i], (int, float)), TypeError
 
     if length_array == 0:
         return [array, 0, 0]
@@ -55,6 +52,7 @@ def recursive_sum(array: list[int or float]) -> int or float:
     if len(array) == 0:
         return 0
 
+    print(array)
     assert isinstance(array[0], (int, float)), TypeError()
 
     if len(array) == 1:

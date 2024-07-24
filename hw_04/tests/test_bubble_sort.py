@@ -1,4 +1,4 @@
-from hw_04.src.main_4 import bobble_sort
+from hw_04.src.main_4 import bubble_sort
 import pytest
 
 
@@ -10,7 +10,7 @@ import pytest
                          ])
 def test_bobble_sort_positive_1(array, expected_result):
 
-    assert bobble_sort(array) == expected_result
+    assert bubble_sort(array) == expected_result
 
 
 @pytest.mark.hw_04
@@ -23,7 +23,7 @@ def test_bobble_sort_positive_1(array, expected_result):
                          ])
 def test_bobble_sort_positive_2(array, order_by, expected_result):
 
-    assert bobble_sort(array, order_by=order_by) == expected_result
+    assert bubble_sort(array, order_by=order_by) == expected_result
 
 
 @pytest.mark.hw_04
@@ -33,6 +33,6 @@ def test_bobble_sort_positive_2(array, order_by, expected_result):
                          ])
 def test_bobble_sort_positive_3(array, order_by, key, expected_result):
 
-    assert bobble_sort(array, order_by=order_by, key=key) == expected_result
+    assert bubble_sort(array, order_by=order_by, key=key) == expected_result
 
 
