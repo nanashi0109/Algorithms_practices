@@ -3,35 +3,40 @@ from __future__ import annotations
 
 class Stack:
 
-    __current_node: Node
+    __top: Node
 
     def __init__(self):
-        self.__current_node = None
+        self.__top = None
+        self.__count = 0
 
-    def push(self, node: Node):
-        node.set_next_node(self.__current_node)
-        self.__current_node = node
+    def push(self, item: Node):
+        item.set_next_node(self.__top)
+        self.__top = item
+
+        self.__count += 1
 
     def pop(self) -> Node:
-        if self.__current_node is None:
+        if self.__top is None:
             return None
 
-        result = self.__current_node
+        result = self.__top
 
-        self.__current_node = self.__current_node.get_next_node()
+        self.__top = self.__top.get_next_node()
+
+        self.__count -= 1
 
         return result
 
     def peek(self):
-        return self.__current_node
+        return self.__top
 
     def is_empty(self) -> bool:
-        return True if self.__current_node is None else False
+        return True if self.__top is None else False
 
     def __str__(self):
         result = ""
 
-        iterator = self.__current_node
+        iterator = self.__top
         while not (iterator is None):
             result += f"{iterator.get_data()} -> "
             iterator = iterator.get_next_node()
@@ -56,19 +61,19 @@ class Node:
         return self.__data
 
 
-stack = Stack()
-
-node1 = Node(1)
-node2 = Node(2)
-node3 = Node(3)
-node4 = Node(4)
-
-stack.push(node1)
-stack.push(node2)
-stack.push(node3)
-stack.push(node4)
-
-stack.pop()
-
-print(stack)
+# stack = Stack()
+#
+# node1 = Node(1)
+# node2 = Node(2)
+# node3 = Node(3)
+# node4 = Node(4)
+#
+# stack.push(node1)
+# stack.push(node2)
+# stack.push(node3)
+# stack.push(node4)
+#
+# stack.pop()
+#
+# print(stack)
 
