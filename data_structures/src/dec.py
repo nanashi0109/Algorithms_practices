@@ -22,6 +22,9 @@ class Dec:
         self.__count += 1
 
     def dequeue(self) -> Node:
+        if self.__head is None:
+            return None
+
         result = self.__head
 
         self.__head = self.__head.get_next_node()
@@ -44,6 +47,9 @@ class Dec:
         self.__count += 1
 
     def dequeue_tail(self) -> Node:
+        if self.__tail is None:
+            return None
+
         result = self.__tail
 
         self.__tail = self.__tail.get_prev_node()

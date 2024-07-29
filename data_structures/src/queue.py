@@ -20,6 +20,9 @@ class Queue:
         self.__count += 1
 
     def dequeue(self) -> Node:
+        if self.__head is None:
+            return None
+
         result = self.__head
 
         self.__head = self.__head.get_next_node()
