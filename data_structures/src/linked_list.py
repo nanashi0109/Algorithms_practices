@@ -2,8 +2,6 @@ class LinkedList:
     def __init__(self):
         self.__current_node = None
 
-
-
     def push(self):
         pass
 

@@ -2,6 +2,13 @@ from __future__ import annotations
 
 
 class Stack:
+    class Node:
+
+        prev_node: Stack.Node
+
+        def __init__(self, data: any, next_node: Stack.Node = None) -> None:
+            self.prev_node = next_node
+            self.data = data
 
     __top: Node
 
@@ -9,71 +16,53 @@ class Stack:
         self.__top = None
         self.__count = 0
 
-    def push(self, item: Node):
-        item.set_next_node(self.__top)
-        self.__top = item
+    def push(self, item: any):
+        node = Stack.Node(item)
+
+        node.prev_node = self.__top
+        self.__top = node
 
         self.__count += 1
 
-    def pop(self) -> Node:
-        if self.__top is None:
+    def pop(self) -> Node or None:
+        if self.is_empty():
             return None
 
-        result = self.__top
+        result = self.__top.data
 
-        self.__top = self.__top.get_next_node()
+        self.__top = self.__top.prev_node
 
         self.__count -= 1
 
         return result
 
     def peek(self):
-        return self.__top
+        return self.__top.data
 
     def is_empty(self) -> bool:
-        return True if self.__top is None else False
+        return True if self.__count == 0 else False
 
     def __str__(self):
         result = ""
 
         iterator = self.__top
         while not (iterator is None):
-            result += f"{iterator.get_data()} -> "
-            iterator = iterator.get_next_node()
+            result += f"{iterator.data} -> "
+            iterator = iterator.prev_node
 
         result += "None"
 
         return result
 
 
-class Node:
-    def __init__(self, data: any, next_node: Node = None) -> None:
-        self.__next_node = next_node
-        self.__data = data
+stack = Stack()
 
-    def set_next_node(self, new_node: Node) -> None:
-        self.__next_node = new_node
+stack.push(1)
+stack.push(2)
+stack.push(3)
+stack.push(4)
 
-    def get_next_node(self) -> Node:
-        return self.__next_node
+stack.pop()
 
-    def get_data(self) -> any:
-        return self.__data
-
-
-# stack = Stack()
-#
-# node1 = Node(1)
-# node2 = Node(2)
-# node3 = Node(3)
-# node4 = Node(4)
-#
-# stack.push(node1)
-# stack.push(node2)
-# stack.push(node3)
-# stack.push(node4)
-#
-# stack.pop()
-#
-# print(stack)
+print(stack)
 

@@ -2,39 +2,50 @@ from __future__ import annotations
 
 
 class Queue:
+    class Node:
+
+        next_node: Queue.Node
+
+        def __init__(self, data: any):
+            self.data = data
+            self.next_node = None
+
     __head: Node
     __tail: Node
 
     def __init__(self):
-        self.__head = None
-        self.__tail = None
         self.__count = 0
 
-    def enqueue(self, item: Node) -> None:
-        if self.__tail is None:
-            self.__head = item
-        else:
-            self.__tail.set_next_node(item)
+        self.__head = None
+        self.__tail = None
 
-        self.__tail = item
+    def enqueue(self, item: any) -> None:
+        node = Queue.Node(item)
+
+        if self.is_empty():
+            self.__head = node
+        else:
+            self.__tail.next_node = node
+
+        self.__tail = node
         self.__count += 1
 
     def dequeue(self) -> Node:
-        if self.__head is None:
+        if self.is_empty():
             return None
 
-        result = self.__head
+        result = self.__head.data
 
-        self.__head = self.__head.get_next_node()
+        self.__head = self.__head.next_node
 
         self.__count -= 1
         return result
 
     def peek(self) -> Node:
-        return self.__head
+        return self.__head.data
 
     def is_empty(self) -> bool:
-        return True if self.__head is None else False
+        return True if self.__count == 0 else False
 
     def get_count(self) -> int:
         return self.__count
@@ -44,46 +55,25 @@ class Queue:
 
         iterator = self.__head
         while not (iterator is None):
-            result += f"{iterator.get_data()} <- "
-            iterator = iterator.get_next_node()
+            result += f"{iterator.data} <- "
+            iterator = iterator.next_node
 
         result += "(tail) <- None"
 
         return result
 
 
-class Node:
-    def __init__(self, data: any, next_node: Node = None):
-        self.__data = data
-        self.__next_node = next_node
+queue = Queue()
 
-    def set_next_node(self, new_node: Node) -> None:
-        self.__next_node = new_node
+queue.enqueue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+queue.enqueue(4)
+queue.enqueue(5)
 
-    def get_next_node(self) -> Node:
-        return self.__next_node
-
-    def get_data(self) -> any:
-        return self.__data
+print(queue.dequeue())
+print(queue.dequeue())
 
 
-# queue = Queue()
-#
-# n1 = Node(1)
-# n2 = Node(2)
-# n3 = Node(3)
-# n4 = Node(4)
-# n5 = Node(5)
-#
-# queue.enqueue(n1)
-# queue.enqueue(n2)
-# queue.enqueue(n3)
-# queue.enqueue(n4)
-# queue.enqueue(n5)
-#
-# queue.dequeue()
-# queue.dequeue()
-#
-#
-# print(queue.get_count())
-# print(queue)
+print(queue.get_count())
+print(queue)
