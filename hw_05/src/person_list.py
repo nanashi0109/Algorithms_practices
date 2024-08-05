@@ -60,7 +60,7 @@ class PersonList:
         self.__count += 1
 
     def insert_person_at(self, index: int, person: PersonCard) -> None or Exception:
-        if self.__count < index or index < 0:
+        if self.__count-1 < index or index < 0:
             raise ValueError("Incorrect index")
 
         if index == 0:
@@ -82,10 +82,10 @@ class PersonList:
         self.__count += 1
 
     def remove_first_person(self) -> Node or None:
-        person = self.__head.person_data
-
         if self.is_empty():
             return None
+
+        person = self.__head.person_data
 
         self.__head = self.__head.next_node
 
@@ -97,16 +97,21 @@ class PersonList:
         return person
 
     def remove_last_person(self) -> Node or None:
-        person = self.__tail.person_data
         if self.is_empty():
             return None
 
-        iterator = self.__head
-        while not (iterator.next_node.next_node is None):
-            iterator = iterator.next_node
+        person = self.__tail.person_data
 
-        self.__tail = iterator
-        self.__tail.next_node = None
+        if self.__count == 1:
+            self.__tail = None
+            self.__head = None
+        else:
+            iterator = self.__head
+            while not (iterator.next_node.next_node is None):
+                iterator = iterator.next_node
+
+            self.__tail = iterator
+            self.__tail.next_node = None
 
         self.__count -= 1
 
@@ -129,6 +134,7 @@ class PersonList:
     def clear_all(self):
         self.__head = None
         self.__tail = None
+        self.__count = 0
 
     def total_people(self):
         return self.__count
@@ -160,13 +166,5 @@ class PersonList:
 # personList.add_person(card1)
 # personList.add_person(card4)
 # personList.append_person(card3)
-#
-# personList.insert_person_at(0, card2)
-#
-#
-# print(personList)
-#
-# personList.remove_person(card1)
-# print(personList.total_people())
 #
 # print(personList)
