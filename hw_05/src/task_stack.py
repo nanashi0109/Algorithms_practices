@@ -46,7 +46,7 @@ class TaskStack:
 
         task = self.__top.task
 
-        self.__top = self.__top.next_node
+        self.__top = self.__top.prev_node
         self.__count -= 1
 
         return task
@@ -69,7 +69,7 @@ class TaskStack:
         iterator = self.__top
         while not (iterator is None):
             result += f"{iterator.task.description} -> "
-            iterator = iterator.next_node
+            iterator = iterator.prev_node
 
         result += "None"
 
