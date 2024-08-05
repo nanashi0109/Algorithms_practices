@@ -4,14 +4,14 @@ from __future__ import annotations
 class Queue:
     class Node:
 
-        next_node: Queue.Node
+        next_node: Queue.Node or None
 
         def __init__(self, data: any):
             self.data = data
             self.next_node = None
 
-    __head: Node
-    __tail: Node
+    __head: Node or None
+    __tail: Node or None
 
     def __init__(self):
         self.__count = 0
@@ -30,11 +30,14 @@ class Queue:
         self.__tail = node
         self.__count += 1
 
-    def dequeue(self) -> Node:
+    def dequeue(self) -> Node or None:
         if self.is_empty():
             return None
 
         result = self.__head.data
+
+        if self.__count == 1:
+            self.__tail = None
 
         self.__head = self.__head.next_node
 
@@ -63,17 +66,17 @@ class Queue:
         return result
 
 
-queue = Queue()
-
-queue.enqueue(1)
-queue.enqueue(2)
-queue.enqueue(3)
-queue.enqueue(4)
-queue.enqueue(5)
-
-print(queue.dequeue())
-print(queue.dequeue())
-
-
-print(queue.get_count())
-print(queue)
+# queue = Queue()
+#
+# queue.enqueue(1)
+# queue.enqueue(2)
+# queue.enqueue(3)
+# queue.enqueue(4)
+# queue.enqueue(5)
+#
+# print(queue.dequeue())
+# print(queue.dequeue())
+#
+#
+# print(queue.get_count())
+# print(queue)

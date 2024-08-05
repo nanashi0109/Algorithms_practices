@@ -46,12 +46,15 @@ class TaskStack:
 
         task = self.__top.task
 
-        self.__top = self.__top.prev_node
+        self.__top = self.__top.next_node
         self.__count -= 1
 
         return task
 
-    def peek(self) -> ProjectTask:
+    def peek(self) -> ProjectTask or None:
+        if self.is_empty():
+            return None
+
         return self.__top.task
 
     def is_empty(self) -> bool:
@@ -66,7 +69,7 @@ class TaskStack:
         iterator = self.__top
         while not (iterator is None):
             result += f"{iterator.task.description} -> "
-            iterator = iterator.prev_node
+            iterator = iterator.next_node
 
         result += "None"
 
