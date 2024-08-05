@@ -10,6 +10,7 @@ def pre_condition():
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("person_card, expected_result, count_person",
                          [
                              (PersonCard("Person_1", 12, "pop"), "Person_1 -> None", 1),
@@ -22,6 +23,7 @@ def test_add_person_positive_1(person_card, expected_result, count_person, pre_c
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("person_cards, expected_result, count_person",
                          [
                              ([

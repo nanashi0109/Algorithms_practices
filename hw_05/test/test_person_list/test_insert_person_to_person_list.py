@@ -19,6 +19,7 @@ def pre_condition():
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("index, person_card, expected_result, count_person",
                          [
                              (1, PersonCard("Nan", 43, "None"), "Name_3 -> Nan -> Name_2 -> Name_1 -> None", 4),
@@ -33,6 +34,7 @@ def test_insert_person_positive(index, person_card, expected_result, count_perso
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("index, person_card, expected_result",
                          [
                              (3, PersonCard("Nan", 43, "None"), pytest.raises(ValueError)),

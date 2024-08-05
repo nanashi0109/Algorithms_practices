@@ -19,6 +19,7 @@ def pre_condition():
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("count_removes, expected_result, count_person",
                          [
                              (1, "Name_2 -> Name_1 -> None", 2),
@@ -34,6 +35,7 @@ def test_remove_first_person_positive_1(count_removes, expected_result, count_pe
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("count_removes, expected_result",
                          [
                              (0, "Name_3"),
@@ -48,6 +50,7 @@ def test_remove_first_person_positive_2(count_removes, expected_result, pre_cond
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("count_removes, expected_result, count_person",
                          [
                              (5, "None", 0),

@@ -11,6 +11,7 @@ def pre_condition():
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("task, count_tasks, expected_result",
                          [
                              (ProjectTask("desc_1", datetime(1, 1, 1)), 1, "desc_1 -> None"),
@@ -24,6 +25,7 @@ def test_push_positive_1(task, count_tasks, expected_result, pre_condition):
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("tasks, count_tasks, expected_result",
                          [
                              ([

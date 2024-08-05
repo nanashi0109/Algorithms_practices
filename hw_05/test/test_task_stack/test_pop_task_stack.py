@@ -21,6 +21,7 @@ def pre_condition():
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("count_tasks, expected_result",
                          [
                              (3, "desc_3 -> desc_2 -> desc_1 -> None"),
@@ -33,6 +34,7 @@ def test_pop_positive_1(count_tasks, expected_result, pre_condition):
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("count_pops, count_tasks, expected_result",
                          [
                              (2, 2, "desc_2 -> desc_1 -> None"),
@@ -48,6 +50,7 @@ def test_pop_positive_2(count_pops, count_tasks, expected_result, pre_condition)
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("count_pops, expected_result",
                          [
                              (2, "desc_2"),
@@ -61,6 +64,7 @@ def test_pop_positive_3(count_pops, expected_result, pre_condition):
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("count_pops, expected_result",
                          [
                              (5, None),

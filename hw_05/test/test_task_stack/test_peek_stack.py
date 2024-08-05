@@ -21,6 +21,7 @@ def pre_condition():
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("expected_result",
                          [
                              "desc_4",
@@ -30,6 +31,7 @@ def test_peek_positive_1(expected_result, pre_condition):
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("count_pops, expected_result",
                          [
                              (2, "desc_2"),
@@ -43,6 +45,7 @@ def test_peek_positive_2(count_pops, expected_result, pre_condition):
 
 
 @pytest.mark.hw_05
+@pytest.mark.task_stack
 @pytest.mark.parametrize("count_pops, expected_result",
                          [
                              (5, None),

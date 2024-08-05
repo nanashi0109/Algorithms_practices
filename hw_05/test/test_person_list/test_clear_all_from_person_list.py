@@ -19,6 +19,7 @@ def pre_condition():
 
 
 @pytest.mark.hw_05
+@pytest.mark.person_list
 @pytest.mark.parametrize("expected_result, count_person",
                          [("None", 0)])
 def test_clear_all_positive(expected_result, count_person, pre_condition):
