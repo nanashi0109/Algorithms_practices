@@ -150,23 +150,23 @@ class PersonList:
         return result
 
 
-personList = PersonList()
-
-card1 = PersonCard("Firs", 1, "ss")
-card2 = PersonCard("Sec", 2, "aa")
-card3 = PersonCard("Third", 3, "rr")
-card4 = PersonCard("For", 4, "vv")
-
-personList.add_person(card1)
-personList.add_person(card4)
-personList.append_person(card3)
-
-personList.insert_person_at(0, card2)
-
-
-print(personList)
-
-personList.remove_person(card1)
-print(personList.total_people())
-
-print(personList)
+# personList = PersonList()
+#
+# card1 = PersonCard("Firs", 1, "ss")
+# card2 = PersonCard("Sec", 2, "aa")
+# card3 = PersonCard("Third", 3, "rr")
+# card4 = PersonCard("For", 4, "vv")
+#
+# personList.add_person(card1)
+# personList.add_person(card4)
+# personList.append_person(card3)
+#
+# personList.insert_person_at(0, card2)
+#
+#
+# print(personList)
+#
+# personList.remove_person(card1)
+# print(personList.total_people())
+#
+# print(personList)
